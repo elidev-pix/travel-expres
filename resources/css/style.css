@@ -1,0 +1,42 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espace entre les 3 blocs */
+    align-items: center;           /* Alignement vertical au centre */
+    background-color: #000;        /* Fond noir */
+    padding: 10px 20px;
+    height: 60px;                  /* Ajustez selon vos besoins */
+       /* La ligne dorée en haut */
+}
+
+/* On force le logo et les icônes à prendre la même largeur 
+   pour que le titre reste parfaitement au centre de l'écran */
+.logo-section, .head-icon {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+}
+
+.logo-section img {
+    height: 40px; /* Taille du logo */
+}
+
+.title {
+    flex: 2; /* Donne plus d'importance au titre */
+    text-align: center;
+    color: #d5a293; /* Couleur dorée du texte */
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.head-icon {
+    justify-content: flex-end; /* Aligne les icônes à droite */
+    gap: 20px;                 /* Espace entre les icônes */
+}
+
+.head-icon ion-icon {
+    color: #c5a059;            /* Couleur dorée des icônes */
+    font-size: 24px;
+    cursor: pointer;
+}
+

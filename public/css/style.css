@@ -1,0 +1,558 @@
+body{
+  position:relative;
+  margin:0px;
+  padding:0px;
+  font-family: "Inter", sans-serif;
+font-size: clamp(14px, 1.5vw, 18px);
+}
+
+.container{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+.head{
+  position: relative;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 75px;
+  width: 100%;
+
+}
+
+.head img{
+  position: absolute;
+  left: 30px;
+  top: 40%;
+  transform: translateY(-50%);
+  max-width: 150px;
+  height: 75px;
+
+}
+/* Modal overlay styles: hidden by default, shown as centered overlay when JS toggles `.show` */
+#modalUnique{
+  display: flex;
+  position: fixed;
+  inset: 0;
+  /* légèrement plus sombre que 0.5 mais sans être trop agressif */
+  background: rgba(0,0,0,0.62);
+  /* léger flou de fond (optionnel selon navigateur) */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms ease, visibility 240ms ease;
+}
+
+#modalUnique.show{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#modalUnique .modal-dialog{
+  max-width: 600px;
+  margin: 0;
+}
+
+/* subtle scale/translate animation for the dialog */
+#modalUnique .modal-content{
+  transform: translateY(-8px) scale(0.98);
+  transition: transform 240ms ease, opacity 240ms ease;
+  opacity: 0.95;
+}
+
+#modalUnique.show .modal-content{
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.head span{
+  color: #bd9b16;
+  font-size: 30px;
+  
+}
+
+.head-icon{
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.head-icon ion-icon{
+  font-size: 40px;
+  color: #bd9b16;
+}
+
+.links{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.links span{
+  font-size: 18px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.links a{
+  text-decoration: none;
+  color: gray;
+}
+
+#back-link{
+  position: absolute;
+  left: 20px;
+}
+
+.main-content{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+ 
+.left{
+  position: absolute;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile{
+  position: relative;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  border: 2px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  width: 150px;
+}
+
+.profile img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.profile span{
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile h5{
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: gray;
+    font-weight: normal;
+}
+
+.left .icons{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.left a{
+  text-decoration: none;
+}
+
+.left a ion-icon{
+  display: flex;
+  color: #bd9b16;
+  font-size: 50px;
+}
+
+.right{
+  position: relative;
+  left: 50px;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+  width: auto;
+}
+
+.card-header{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+  margin-bottom: 5px;
+  border-bottom: 1px solid gray;
+}
+
+.card-header h3{
+  margin: 0;
+  font-size: 20px;
+}
+
+.card-header a{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  color: #00bf63;
+  font-weight: bold;
+}
+
+#modify{
+    position: relative;
+    display: none;
+
+}
+
+
+.card-body{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.info-group{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-group label{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: gray;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.modal-header h5 {
+    margin: 0;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+/* Style pour les champs du formulaire à l'intérieur */
+#contenuFormulaire input, 
+#contenuFormulaire select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Pour que le padding ne dépasse pas */
+}
+
+
+form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 2px solid gray;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+form label{
+  font-size: 24px;
+  color: #bd9b16;
+}
+
+form input{
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+form input:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+form input::placeholder{
+  position: relative;
+  font-family: "Inter", sans-serif;
+}
+
+
+form button{
+  position: relative;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  padding: 7px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  color: #bd9b16;
+  transition: 0.4s ease;
+}
+
+#no_payment_message{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border: 1px solid #bd9b16;
+  border-radius:10px;
+  color: gray;
+  padding: 10px;
+
+
+}
+
+
+table{
+  position: relative;
+  top: 50px;
+  left: 50px;
+}
+
+
+thead{
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: #bd9b16;
+  color: white;
+  height: 50px;
+}
+
+thead th{
+  position: relative;
+  font-size: 18px;
+  padding: 15px;
+}
+
+tbody tr td{
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody tr td ion-icon{
+  font-size: 16px;
+  color: #bd9b16;
+}
+
+tbody tr:first-child{
+  font-weight: normal;
+}
+
+tbody tr{
+  height: 50px;
+}
+
+.remains{
+  position: relative;
+  top:50px;
+  left: 50px;
+  font-size: 18px;
+  color: white;
+  background-color: gray;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  height: auto;
+  width: 300px;
+
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background-color: gray;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  height: auto;
+  width:300px;
+  cursor: pointer;
+}
+
+button a{
+  text-decoration: none;
+  color: white;
+  font-family: "Inter", sans-serif;
+  transition: 0.3s ease;
+
+}
+
+
+button:active{
+  transform: scale(0.95);
+}
+
+/* Actions column: show only icons, centered and colored */
+.actions{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.actions .delete-form,
+.actions .edit-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 6px;
+  margin: 0;
+}
+.actions .delete-form button{
+  background: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.actions ion-icon{
+  color: #bd9b16;
+  font-size: 20px;
+}
+
+.actions .delete{
+  color: red;
+}
+
+.actions .delete-form button:focus,
+.actions .edit-link:focus{
+  outline: none;
+}
+
+.delete-form, .edit-link{
+  position: relative;
+  background: none;
+  background-color: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  width: auto;
+}
+
+/* Upload box styles */
+.upload-box{
+  border: 2px dashed #cfcfcf;
+  padding: 24px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fafafa;
+  color: #333;
+  max-width: 600px;
+  margin: 20px 0;
+}
+.upload-box strong{font-weight:700}
+.upload-box.dragover{
+  background: #eef9ff;
+  border-color: #00bf63;
+}
+
+
+.delete-form button, .edit-link button{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+}
+
+.deleteIcon{
+  position: relative;
+  background: none;
+  border: none;
+}
+
+
+
+
+
+.upload-box {
+  background: white;
+  padding: 25px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  color: #777;
+  font-size: 16px;
+  position: relative;
+  left: 50px;
+}
+
+.list-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+}
